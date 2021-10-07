@@ -1,20 +1,13 @@
-# 상하좌우
+# 큰수의법칙
 
-n = int(input()) 
-# 이동방향
-plan = input().split()
+n, m, k = map(int, input().split())
+arr = list(map(int, input().split()))
 
-# 현재 위치 좌표
-x,y = 1, 1
+arr.sort(reverse = True)
 
-for i in plan:
-  if(i == 'R' and (y+1) <= n):
-    y+=1
-  elif(i == 'L' and (y-1) >= 1):
-    y-=1
-  elif(i == 'D' and (x+1) <= n):
-    x+=1
-  elif(i == 'U' and (x-1) >= 1):
-    x-=1
+result = 0
+result += (m // (k + 1)) * k * arr[0]
+result += (m // (k + 1)) * arr[1]
+result += (m % (k + 1)) * arr[0]
 
-print(x, y)
+print(result)
